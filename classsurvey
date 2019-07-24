@@ -1,0 +1,47 @@
+import time
+import json
+
+response =[]
+yes= ["yeah","yes","YES","sure","ok","okay","Yes","DUH","duh","of course","k","kk","K","ya","ye"]
+
+def valid_respone(input,yes):#Check if response in yes list
+    if input in yes:
+        return True
+    else:
+        return False
+
+while True:
+    name = input("whats your name?")# question 1
+    age = input("How old are you?")#question 2
+    grade = input ("what grade are you in?")#question 3
+    house = input("In what city do you live?")#question 5
+    Apocalypse = input("How Long do you think you would Last In A Zombie Apocalypse?")
+    disney = input("What’s your favorite Disney movie?")
+    ghost = input ("Do you believe in ghosts?")
+    coffee = input("Do you like coffee?")
+
+    answer ={
+    'name':name,
+    'age': age,
+    'grade':grade,
+    'home': house,
+    'Apocalypse':Apocalypse,
+    "disney":disney,
+    "ghost":ghost,
+    "coffee":coffee}
+    response.append(answer)
+    print("thanks for answering all the question.here are your response")
+    print(answer)
+    time.sleep(2)
+    print("BYE")
+    print()
+    print()
+    with open("survey.json","w") as write_file:
+        json.dump(response,write_file, indent = 4)
+    cont = input ("would you like to take the survey?") # restar of survey
+    if valid_respone(cont,yes)== True:
+        continue
+    else:
+        break
+
+print (response)
